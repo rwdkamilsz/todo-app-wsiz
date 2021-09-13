@@ -1,18 +1,12 @@
 # Todo App
 Simple Todo App with swipe gestures - user can edit or delete task on swipe.
 
-## Shots from App
+## Features
 
-<table>
-  <tr>
-    <td><div align="center">Splash Screen</div> </td>
-     <td><div align="center">Floating action button for adding new tasks</div> </td>
-     <td><div align="center">Mark task as done</div> </td>
-  </tr>
-### Swipe gestures
-  <tr>
-    <td> <div align="center">Edit task by swiping left</div> </td> 
-    <td> <div align="center">Delete task by swiping right</div> </td> 
-   </tr>
-   
- </table>
+<ul>
+   <li>Splash Screen</li>
+   <li>Floating action button for adding new tasks</li>
+   <li>Mark task as done</li>
+   <li>Edit task by swiping left</li>
+   <li>Delete task by swiping right</li>
+</ul>
