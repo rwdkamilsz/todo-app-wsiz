@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lista zadań</string>
+    <string name="save">Zapisz</string>
+    <string name="new_task">Wprowadź zadanie</string>
+    <string name="tasks">Zadania</string>
+    <string name="deleteTask">Usuń zadanie</string>
+    <string name="deletTaskDescription">Czy chcesz usunąć to zadanie?</string>
+    <string name="approve">Potwierdź</string>
+</resources>
