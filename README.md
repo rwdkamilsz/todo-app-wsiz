@@ -1,5 +1,5 @@
 # Todo App
-Simple Todo App with sqipe gestures - user can edit or delete task on swipe.
+Simple Todo App with swipe gestures - user can edit or delete task on swipe.
 
 ## Shots from App
 
