@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tasksText"
+    <ViewSwitcher
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/tasks"
-        android:gravity="center_horizontal"
-        android:textColor="@android:color/black"
-        android:textSize="32sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:id="@+id/switcher"
+        >
 
-    <androidx.recyclerview.widget.RecyclerView
+        <TextView
+            android:id="@+id/text_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60sp"
+            android:gravity="center"
+            android:text="@string/list_empty"
+            android:textSize="16sp"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tasksRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tasksText"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:nestedScrollingEnabled="true" />
+
+
+    </ViewSwitcher>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

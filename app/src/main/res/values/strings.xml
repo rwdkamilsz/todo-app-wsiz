@@ -6,4 +6,8 @@
     <string name="deleteTask">Usuń zadanie</string>
     <string name="deletTaskDescription">Czy chcesz usunąć to zadanie?</string>
     <string name="approve">Potwierdź</string>
+    <string name="action_settings">Usuń wszystkie</string>
+    <string name="deleteAllTask">Usunięcie wszystkich zadań</string>
+    <string name="deleteAllTaskDescription">Czy na pewno chcesz usunąc wszystkie zadania?</string>
+    <string name="list_empty">Na liście zadań nic nie ma. \n Dodaj swoje pierwsze zadanie</string>
 </resources>

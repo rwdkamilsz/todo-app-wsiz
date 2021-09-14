@@ -1,6 +1,8 @@
 package com.example.TodoAPP.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,15 +44,24 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         db.openDatabase();
 
-        final TaskModel item = todoList.get(position);
+         final TaskModel item = todoList.get(position);
         holder.task.setText(item.getTask());
         holder.task.setChecked(toBoolean(item.getStatus()));
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+
+                    holder.task.setTextColor(Color.GRAY);
+
+                    holder.task.setPaintFlags(holder.task.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);;
                     db.updateStatus(item.getId(), 1);
+
                 } else {
+
+                    holder.task.setTextColor(Color.BLACK);
+
+                    holder.task.setPaintFlags(0);
                     db.updateStatus(item.getId(), 0);
                 }
             }
@@ -73,6 +84,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     public void setTasks(List<TaskModel> todoList) {
         this.todoList = todoList;
         notifyDataSetChanged();
+        activity.showItems(todoList);
     }
 
     public void deleteItem(int position) {
@@ -80,8 +92,16 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         db.deleteTask(item.getId());
         todoList.remove(position);
         notifyItemRemoved(position);
-    }
 
+        activity.showItems(todoList);
+    }
+    public void deleteAllItems() {
+        todoList.removeAll(todoList);
+        db.deleteAll();
+        notifyDataSetChanged();
+
+        activity.showItems(todoList);
+    }
     public void editItem(int position) {
         TaskModel item = todoList.get(position);
         Bundle bundle = new Bundle();
