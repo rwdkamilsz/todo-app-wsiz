@@ -1,30 +1,26 @@
 package com.example.TodoAPP;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.ViewSwitcher;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.TodoAPP.Adapters.ToDoAdapter;
 import com.example.TodoAPP.Model.TaskModel;
 import com.example.TodoAPP.Utils.DatabaseHandler;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements DialogCloseListener{
 
@@ -35,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     private FloatingActionButton fab;
 
     private List<TaskModel> taskModelList;
-    private Object ViewSwitcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,34 +92,29 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.deleteAllButton:
-                AlertDialog.Builder builder = new AlertDialog.Builder(tasksAdapter.getContext());
-                builder.setTitle(R.string.deleteAllTask);
-                builder.setMessage(R.string.deleteAllTaskDescription).setPositiveButton(R.string.approve,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                tasksAdapter.deleteAllItems();
-                            }
-                        });
-                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        tasksAdapter.notifyDataSetChanged();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+        if (item.getItemId() == R.id.deleteAllButton) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(tasksAdapter.getContext());
+            builder.setTitle(R.string.deleteAllTask);
+            builder.setMessage(R.string.deleteAllTaskDescription).setPositiveButton(R.string.approve,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            tasksAdapter.deleteAllItems();
+                        }
+                    });
+            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    tasksAdapter.notifyDataSetChanged();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
 
-                return true;
-
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-
-        }
+            return true;
+        }// If we got here, the user's action was not recognized.
+        // Invoke the superclass to handle it.
+        return super.onOptionsItemSelected(item);
     }
 
 }

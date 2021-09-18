@@ -42,7 +42,7 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
                         public void onClick(DialogInterface dialog, int which) {
                             adapter.deleteItem(position);
                         }
-                    });
+                    } );
             builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
